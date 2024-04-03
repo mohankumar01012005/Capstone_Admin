@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   Container,
   Box,
@@ -15,20 +14,26 @@ import {
 } from '@chakra-ui/react';
 
 const AdminAuth = () => {
-  // const [count, setCount] = useState(5);
+  const [adminId, setAdminId] = React.useState('');
 
+  const handleAdminIdChange = (event) => {
+    setAdminId(event.target.value);
+  };
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    console.log("Admin ID:", adminId);
+    
+    setAdminId('');
+  };
 
   return (
     <Container maxW="5xl" p={{ base: 5, md: 10 }}>
       <Stack spacing={4} maxW={{ base: '20rem', sm: '25rem' }} margin="0 auto">
         <Stack align="center" spacing={2}>
-          <Heading width="90vw" paddingLeft="25vw"   fontSize={{ base: 'xl', sm: '3xl' }}>Hey Admin! Sign in to your account</Heading>
-         
+          <Heading width="90vw" paddingLeft="25vw" fontSize={{ base: 'xl', sm: '3xl' }}>Hey Admin! Sign in to your account</Heading>
         </Stack>
-        <Box pos="relative"
-            marginTop="15vh"
-            height="45vh"
-        >
+        <Box pos="relative" marginTop="15vh" height="45vh">
           <Box
             pos="absolute"
             top="-7px"
@@ -48,12 +53,21 @@ const AdminAuth = () => {
             bg={useColorModeValue('white', 'gray.700')}
             rounded="lg"
             boxShadow="lg"
+            onSubmit={handleSignIn} 
           >
             <FormControl id="email">
               <FormLabel>Admin ID :</FormLabel>
-              <Input marginTop="4vh" type="number" placeholder="Enter Admin ID" rounded="md" />
+              <Input
+                marginTop="4vh"
+                type="number"
+                placeholder="Enter Admin ID"
+                rounded="md"
+                value={adminId} 
+                onChange={handleAdminIdChange}
+              />
             </FormControl>
             <Button
+              type="submit"
               bg="blue.400"
               color="white"
               _hover={{
@@ -65,7 +79,6 @@ const AdminAuth = () => {
             >
               Sign In
             </Button>
-            {/* <Text>Chances Left :{}</Text> */}
           </VStack>
         </Box>
       </Stack>
