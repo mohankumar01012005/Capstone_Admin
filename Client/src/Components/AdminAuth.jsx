@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Box,
@@ -9,12 +10,13 @@ import {
   Button,
   Heading,
   VStack,
-  Text,
   useColorModeValue
 } from '@chakra-ui/react';
 
 const AdminAuth = () => {
   const [adminId, setAdminId] = React.useState('');
+  const correctAdminId = "123456"; // Predefined correct Admin ID
+  const navigate = useNavigate();
 
   const handleAdminIdChange = (event) => {
     setAdminId(event.target.value);
@@ -23,8 +25,12 @@ const AdminAuth = () => {
   const handleSignIn = (event) => {
     event.preventDefault();
     console.log("Admin ID:", adminId);
-    
-    setAdminId('');
+    if (adminId === correctAdminId) {
+      navigate('/example');
+    } else {
+      alert("Oops! Admin ID didn't match. Try again.");
+    }
+    setAdminId(''); // Reset the Admin ID input field
   };
 
   return (
@@ -53,16 +59,16 @@ const AdminAuth = () => {
             bg={useColorModeValue('white', 'gray.700')}
             rounded="lg"
             boxShadow="lg"
-            onSubmit={handleSignIn} 
+            onSubmit={handleSignIn}
           >
             <FormControl id="email">
               <FormLabel>Admin ID :</FormLabel>
               <Input
                 marginTop="4vh"
-                type="number"
+                type="text"
                 placeholder="Enter Admin ID"
                 rounded="md"
-                value={adminId} 
+                value={adminId}
                 onChange={handleAdminIdChange}
               />
             </FormControl>
