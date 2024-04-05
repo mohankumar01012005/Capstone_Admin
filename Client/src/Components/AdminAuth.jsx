@@ -26,7 +26,7 @@ const AdminAuth = () => {
     event.preventDefault();
     console.log("Admin ID:", adminId);
     if (adminId === correctAdminId) {
-      navigate('/example');
+      navigate('/AdminBoard');
     } else {
       alert("Oops! Admin ID didn't match. Try again.");
     }

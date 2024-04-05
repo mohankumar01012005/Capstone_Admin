@@ -6,6 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import AdminAuth from './Components/AdminAuth'
 import Example from './Components/Example'
 import ParentContext from './Components/ParentContext';
+import AdminBoard from './Components/AdminBoard'
 
 
 function App() {
@@ -17,9 +18,11 @@ function App() {
       <Routes>
         <Route path='/' element={<AdminAuth/>}></Route>
         <Route path='/example' element={<Example/>}></Route>
+        <Route path='/AdminBoard' element={<AdminBoard/>}></Route>
       </Routes>
     </BrowserRouter>
     </ParentContext>
+    {/* // <AdminBoard></AdminBoard> */}
       
     </ChakraProvider>
   )
