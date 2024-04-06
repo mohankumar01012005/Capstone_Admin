@@ -85,33 +85,33 @@ export default function Index() {
             <Stack spacing={8}>
               <Box>
                 <Heading color="blue.400" fontSize="3xl">
-                  Point of sale
+                  {/* Point of sale */}
                 </Heading>
                 <Text fontSize="md" color="gray.500">
-                  Manage your inventory and sale efficiently.
+                  {/* Manage your inventory and sale efficiently. */}
                 </Text>
               </Box>
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4} justifyContent="center">
-                <Button
+                {/* <Button
                   rounded="full"
                   bg="blue.400"
                   color="white"
                   _hover={{
                     bg: 'blue.500'
                   }}
-                >
-                  Stocks
-                </Button>
-                <Button rounded="full">Vendors</Button>
+                > */}
+                  {/* Stocks */}
+                {/* </Button> */}
+                {/* <Button rounded="full">Vendors</Button> */}
               </Stack>
             </Stack>
-
-            <Image
+              <Heading>Admin Board</Heading>
+            {/* <Image
               alt="Homepage Image"
               objectFit="cover"
               width="60vh"
-              src="https://plus.unsplash.com/premium_photo-1685136482569-a59b03025108?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
+              // src="https://plus.unsplash.com/premium_photo-1685136482569-a59b03025108?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            /> */}
           </Stack>
         </Box>
       </Box>
@@ -145,14 +145,14 @@ function SidebarContent({ studentPage, ...props }) {
           color='brand.500'
           fontWeight="semibold"
         >
-          {/* POST */}
+          CricElevate
         </Text>
       </Flex>
       <Flex direction="column" as="nav" fontSize="md" color="gray.600" aria-label="Main Navigation">
         <div onClick={studentPage}>
-        <NavItem icon={AiOutlineHome}>Student</NavItem>
+        <NavItem icon={AiOutlineTeam}>Student Applications</NavItem>
         </div>
-        <NavItem icon={AiOutlineTeam}>Team</NavItem>
+        <NavItem icon={AiOutlineTeam}>Coach Applications</NavItem>
         <NavItem icon={BsFolder2}>Projects</NavItem>
         <NavItem icon={BsCalendarCheck}>Calendar</NavItem>
       </Flex>
