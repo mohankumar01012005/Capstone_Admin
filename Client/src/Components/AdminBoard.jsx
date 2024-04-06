@@ -142,15 +142,15 @@ function SidebarContent({ studentPage, ...props }) {
         <Text
           fontSize="2xl"
           ml="2"
-          color={useColorModeValue('brand.500', 'white')}
+          color='brand.500'
           fontWeight="semibold"
         >
-          POS
+          {/* POST */}
         </Text>
       </Flex>
       <Flex direction="column" as="nav" fontSize="md" color="gray.600" aria-label="Main Navigation">
         <div onClick={studentPage}>
-        <NavItem icon={AiOutlineHome}>Dashboard</NavItem>
+        <NavItem icon={AiOutlineHome}>Student</NavItem>
         </div>
         <NavItem icon={AiOutlineTeam}>Team</NavItem>
         <NavItem icon={BsFolder2}>Projects</NavItem>
