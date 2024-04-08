@@ -1,23 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import {
-  Avatar,
-  Box,
-  Flex,
-  Icon,
-  Text,
-  Stack,
-  Image,
-  Button,
-  Heading,
-  IconButton,
-  useDisclosure,
-  Drawer,
-  DrawerContent,
-  DrawerOverlay,
-  useColorModeValue
-} from '@chakra-ui/react';
+import { Text, Box, Flex, Icon, Stack,Avatar, Image, Button, Heading, IconButton, useDisclosure, Drawer, DrawerContent, DrawerOverlay, useColorModeValue } from '@chakra-ui/react';
 import { FaBell } from 'react-icons/fa';
 import { AiOutlineTeam, AiOutlineHome } from 'react-icons/ai';
 import { BsFolder2, BsCalendarCheck } from 'react-icons/bs';
@@ -32,7 +15,19 @@ export default function Index() {
     navigate('/example');
     console.log("AdminBoard: ");
   };
-  
+  const CoachPage = () => {
+    navigate('/AdminBoard/coachApplication');
+    console.log("Coach_Application: ");
+  };
+  const VerifiedStudent = () => {
+    navigate('/AdminBoard/verifiedStudents');
+    console.log("verifiedStudents");
+  };
+  const VerifiedCoach = () => {
+    navigate('/AdminBoard/verifiedCoach');
+    console.log("Verified_Coach: ");
+  };
+
   return (
     <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="100vh">
       <SidebarContent display={{ base: 'none', md: 'unset' }} studentPage={studentPage} />
@@ -85,33 +80,17 @@ export default function Index() {
             <Stack spacing={8}>
               <Box>
                 <Heading color="blue.400" fontSize="3xl">
-                  Point of sale
+                  Admin Board
                 </Heading>
                 <Text fontSize="md" color="gray.500">
-                  Manage your inventory and sale efficiently.
+                  {/* Add your description here */}
                 </Text>
               </Box>
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4} justifyContent="center">
-                <Button
-                  rounded="full"
-                  bg="blue.400"
-                  color="white"
-                  _hover={{
-                    bg: 'blue.500'
-                  }}
-                >
-                  Stocks
-                </Button>
-                <Button rounded="full">Vendors</Button>
+                {/* Add your buttons here */}
               </Stack>
             </Stack>
-
-            <Image
-              alt="Homepage Image"
-              objectFit="cover"
-              width="60vh"
-              src="https://plus.unsplash.com/premium_photo-1685136482569-a59b03025108?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
+            {/* Add your image or other content here */}
           </Stack>
         </Box>
       </Box>
@@ -139,22 +118,29 @@ function SidebarContent({ studentPage, ...props }) {
     >
       <Flex px="4" py="5" align="center">
         <Icon as={RiFlashlightFill} h={8} w={8} />
-        <Text
+        <Text 
           fontSize="2xl"
+          fontStyle={'oblique'}
           ml="2"
           color='brand.500'
           fontWeight="semibold"
         >
-          {/* POST */}
+          CricElevate
         </Text>
       </Flex>
       <Flex direction="column" as="nav" fontSize="md" color="gray.600" aria-label="Main Navigation">
         <div onClick={studentPage}>
-        <NavItem icon={AiOutlineHome}>Student</NavItem>
+          <NavItem icon={AiOutlineTeam}>Student Applications</NavItem>
         </div>
-        <NavItem icon={AiOutlineTeam}>Team</NavItem>
-        <NavItem icon={BsFolder2}>Projects</NavItem>
-        <NavItem icon={BsCalendarCheck}>Calendar</NavItem>
+        <div onClick={studentPage}>
+          <NavItem icon={AiOutlineTeam}>Coach Applications</NavItem>
+        </div>
+        <div onClick={studentPage}>
+          <NavItem icon={AiOutlineTeam}>Verified Students</NavItem>
+        </div>
+        <div onClick={studentPage}>
+          <NavItem icon={AiOutlineTeam}>Verified Coaches</NavItem>
+        </div>
       </Flex>
     </Box>
   );
