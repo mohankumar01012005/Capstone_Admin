@@ -30,7 +30,7 @@ const AdminAuth = () => {
     } else {
       alert("Oops! Admin ID didn't match. Try again.");
     }
-    setAdminId(''); // Reset the Admin ID input field
+    setAdminId(''); 
   };
 
   return (

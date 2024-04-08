@@ -7,6 +7,9 @@ import AdminAuth from './Components/AdminAuth'
 import Example from './Components/Example'
 import ParentContext from './Components/ParentContext';
 import AdminBoard from './Components/AdminBoard'
+import Coach_Applications from './Components/Coach_Applications'
+import Verified_Coaches from './Components/Verified_Coaches'
+import Verified_Students from './Components/Verified_Students'
 
 
 function App() {
@@ -19,12 +22,18 @@ function App() {
         <Route path='/' element={<AdminAuth/>}></Route>
         <Route path='/example' element={<Example/>}></Route>
         <Route path='/AdminBoard' element={<AdminBoard/>}></Route>
+        <Route path='AdminBoard/coachApplication' element={<Coach_Applications/>}></Route>
+        <Route path='AdminBoard/verifiedCoach' element={<Verified_Coaches/>}></Route>
+        <Route path='AdminBoard/verifiedStudents' element={<Verified_Students/>}></Route>
       </Routes>
     </BrowserRouter>
     </ParentContext>
     {/* // <AdminBoard></AdminBoard> */}
       
     </ChakraProvider>
+  
+
+  
   )
 }
 
