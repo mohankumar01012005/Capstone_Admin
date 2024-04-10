@@ -13,9 +13,9 @@ const DenyMail = async (userName, name) => {
     from: '"Mohan kumar 👻" <mohantheboss1432@gmail.com>',
     to: userName,
 
-    subject: name,
-    text: name,
-    html: `<p>Hello User you have been rejected check with your credencials ..</p>`,
+    subject: "Account Rejection",
+    text: "Dear User, Your account creation request has been rejected. Please review your credentials and try again. Best regards, Mohan Kumar",
+    html: `<p>Hey ${name} as you have been applied in our website CricElevate for creating an account and you Have been rejected Kindly Check your credentials and try again make sure you are giving the right credentials</p>`,
   });
   console.log("Message sent: %s", info.messageId);
   // res.json({info});
