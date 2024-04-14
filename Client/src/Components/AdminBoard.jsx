@@ -16,7 +16,7 @@ export default function Index() {
     console.log("AdminBoard: ");
   };
   const CoachPage = () => {
-    navigate('/AdminBoard/coachApplication');
+    navigate('/CoachData');
     console.log("Coach_Application: ");
   };
   const VerifiedStudent = () => {
@@ -30,11 +30,11 @@ export default function Index() {
 
   return (
     <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="100vh">
-      <SidebarContent display={{ base: 'none', md: 'unset' }} studentPage={studentPage} />
+      <SidebarContent display={{ base: 'none', md: 'unset' }} CoachPage={CoachPage} studentPage={studentPage} />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
-          <SidebarContent w="full" borderRight="none" studentPage={studentPage} />
+          <SidebarContent w="full" borderRight="none" studentPage={studentPage} CoachPage={CoachPage}/>
         </DrawerContent>
       </Drawer>
       <Box ml={{ base: 0, md: 60 }} transition=".3s ease">
@@ -98,7 +98,7 @@ export default function Index() {
   );
 }
 
-function SidebarContent({ studentPage, ...props }) {
+function SidebarContent({ studentPage,CoachPage, ...props }) {
   return (
     <Box
       as="nav"
@@ -132,7 +132,7 @@ function SidebarContent({ studentPage, ...props }) {
         <div onClick={studentPage}>
           <NavItem icon={AiOutlineTeam}>Student Applications</NavItem>
         </div>
-        <div onClick={studentPage}>
+        <div onClick={CoachPage}>
           <NavItem icon={AiOutlineTeam}>Coach Applications</NavItem>
         </div>
         <div onClick={studentPage}>
