@@ -55,5 +55,45 @@ router.post("/createCoach", async (req, res) => {
   }
 });
 
+router.post("/coachlogin", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const coachExists = await CoachModel.findOne({ email: email });
+    if (coachExists) {
+      if(coachExists.password===password){
+      res.send({ message: true });}
+      else {
+        res.send({message : false})
+      }
+    } 
+    else{
+      res.send({message:false})
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: false, error: "Internal Server Error" });
+  }
+});
 
+
+
+router.post("/studentlogin", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const studentExists = await StudentModel.findOne({ email: email });
+    if (studentExists) {
+      if(studentExists.password===password){
+      res.send({ message: true });}
+      else {
+        res.send({message : false})
+      }
+    } 
+    else{
+      res.send({message:false})
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: false, error: "Internal Server Error" });
+  }
+});
 export default router;
