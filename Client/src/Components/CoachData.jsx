@@ -55,7 +55,7 @@ const CoachData = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/checkCoach"
+        "http://localhost:3001/checkCoach "
       );
       console.log(response.data);
       setData(response.data.coachData);
@@ -63,7 +63,7 @@ const CoachData = () => {
       setError(error.message);
     } finally {
       setLoading(false);
-    }ertyuiopasdfghjk
+    }
   };
 
   useEffect(() => {
@@ -77,29 +77,29 @@ const CoachData = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  const Deleteuser=async(id,username)=>{
+  const DeleteCoach=async(id,coachname)=>{
     try {
-      const deleteuser=await axios.delete(`http://localhost:3001/deleteuser/${username}/${id}`)
-      console.log(deleteuser);
+      const deleteCoach=await axios.delete(`http://localhost:3001/deletecoach/${coachname}/${id}`)
+      console.log(DeleteCoach);
       
     } catch (error) {
       console.log(error);
       
     }
       }
-  const Deleteuserafterverified=async(id)=>{
+  const DeleteCoachafterverified=async(id)=>{
     try {
-      const deleteuser=await axios.delete(`http://localhost:3001/deleteuserafterverified/${id}`)
-      console.log(deleteuser);
+      const deleteCoach=await axios.delete(`http://localhost:3001/DeleteCoachafterverified/${id}`)
+      console.log(deleteCoach);
       
     } catch (error) {
       console.log(error);
       
     }
       }
-  const VerifiedUser=async(user)=>{
+  const VerifiedCoach=async(user)=>{
     try {
-      const response=await axios.post("http://localhost:5001/createUser",user)
+      const response=await axios.post("http://localhost:5001/createCoach",user)
       console.log(response);
       
     } catch (error) {
@@ -179,10 +179,10 @@ const CoachData = () => {
                 <Deny /> */} 
 
                 <Button margin="3vh 0 0 0" colorScheme='green' onClick={()=>{
-                  VerifiedUser(item)
-                  Deleteuserafterverified(item._id)
+                  VerifiedCoach(item)
+                  DeleteCoachafterverified(item._id)
                 }}>Accept</Button>
-                <Button  margin="3vh 0 0 15vw" colorScheme='orange' onClick={()=>{Deleteuser(item._id,item.email),console.log(item._id)}}>Deny</Button>
+                <Button  margin="3vh 0 0 15vw" colorScheme='orange' onClick={()=>{DeleteCoach (item._id,item.email),console.log(item._id)}}>Deny</Button>
               </Flex>
             </Box>
           </Box>
