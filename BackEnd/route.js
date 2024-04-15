@@ -3,7 +3,7 @@ import StudentModel from "./models/studentSchema.js";
 import CoachModel from "./models/coachSchema.js";
 import sendMail from "./utils/sendMail.js";
 import DenyMail from "./utils/DenyMail.js";
-
+import coachSuccessMail from "./utils/coachSuccessMail.js";
 const router = express.Router();
 
 router.use(express.json());
@@ -37,8 +37,9 @@ router.get("/sendemail", sendMail);
 router.get("/denyemail", DenyMail);
 
 router.post("/createCoach", async (req, res) => {
-  const { email } = req.body;
+  const { email, firstName } = req.body;
   const data = req.body;
+  coachSuccessMail(email,firstName)
   try {
     const coachExists = await CoachModel.findOne({ email: email });
     if (coachExists) {
