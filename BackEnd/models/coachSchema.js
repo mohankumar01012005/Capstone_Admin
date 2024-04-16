@@ -57,6 +57,10 @@ const coachSchema = new mongoose.Schema({
   password:{
     type: String,
     // required: true
+  },
+  description:{
+    type: String,
+    // required: true
   }
 });
 

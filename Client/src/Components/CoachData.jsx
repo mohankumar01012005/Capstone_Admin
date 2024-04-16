@@ -174,6 +174,9 @@ const CoachData = () => {
               <Text fontSize="md" color="gray.500">
                 Highest Level Played: {item._id}
               </Text>
+              <Text fontSize="md" color="gray.500">
+                Highest Level Played: {item.description}
+              </Text>
               <Flex display="flex">
                 {/* <Accept/>
                 <Deny /> */} 
