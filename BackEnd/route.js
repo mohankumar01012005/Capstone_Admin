@@ -31,7 +31,22 @@ router.post("/createUser", async (req, res) => {
 });
 
 
-
+router.get("/getStudent",async(req,res)=>{
+try {
+  const data=await StudentModel.find();
+  res.send({data})
+} catch (error) {
+  res.send(error)
+}
+})
+router.get("/getCoach",async(req,res)=>{
+try {
+  const data=await CoachModel.find();
+  res.send({data})
+} catch (error) {
+  res.send(error)
+}
+})
 
 router.get("/sendemail", sendMail);
 router.get("/denyemail", DenyMail);
