@@ -18,6 +18,22 @@ const coachSchema = new mongoose.Schema({
     type: String,
     // required: true
   },
+  state: {
+    type: String,
+    // required: true
+  },
+  address: {
+    type: String,
+    // required: true
+  },
+  role: {
+    type: String,
+    // required: true
+  },
+  highestLevelPlayed: {
+    type: String,
+    // required: true
+  },
   age: {
     type: Number,
     // required: true
@@ -54,6 +70,10 @@ const coachSchema = new mongoose.Schema({
     type: String,
     // required: true
   },
+  role: {
+    type: String,
+    // required: true
+  },
   password:{
     type: String,
     // required: true
@@ -61,7 +81,19 @@ const coachSchema = new mongoose.Schema({
   description:{
     type: String,
     // required: true
-  }
+  },
+  amionline:{
+    type: String,
+    // required: true
+  },
+  gender:{
+    type: String,
+    // required: true
+  },
+  password:{
+    type: String,
+    // required: true
+  },
 });
 
 const CoachModel = mongoose.model("verifiedCoach", coachSchema);

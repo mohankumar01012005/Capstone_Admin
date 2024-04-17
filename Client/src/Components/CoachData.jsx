@@ -109,7 +109,7 @@ const CoachData = () => {
       }
 
   return (
-    <Container maxW="5xl" p={{ base: 5, md: 6 }}>
+    <Container maxW="5xl" p={{ base: 5, md: 6 }} >
       <img
         style={{ cursor: "pointer", marginLeft: "80vw" }}
         width="5%"
@@ -117,9 +117,9 @@ const CoachData = () => {
         src={refresh}
         alt="refresh"
       />
-      <Grid templateColumns="repeat(auto-fill, minmax(17rem, 1fr))" gap={6}>
+      <Grid templateColumns="repeat(auto-fill, minmax(17rem, 1fr))" gap={6} >
         {data.map((item, index) => (
-          <Box key={index}>
+          <Box marginLeft={"10vw"}key={index}w={"60vw"}>
             <Box
               p={4}
               border="1px solid"
@@ -164,19 +164,42 @@ const CoachData = () => {
               <Text fontSize="md" color="gray.500">
                 Phone: {item.phone}
               </Text>
+           
+
               <Text fontSize="md" color="gray.500">
-                Address: {item.address}, {item.state}, {item.country},{" "}
-                {item.pinCode}
+              state :{item.state}
               </Text>
               <Text fontSize="md" color="gray.500">
                 Role: {item.role}
               </Text>
               <Text fontSize="md" color="gray.500">
-                Highest Level Played: {item._id}
+                Highest Level Played: {item.highestLevelPlayed}
               </Text>
               <Text fontSize="md" color="gray.500">
-                Highest Level Played: {item.description}
+              Address {item.address}
               </Text>
+              <Text fontSize="md" color="gray.500">
+              Description: {item.description}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+                is the coach online : {item.amionline}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+              country:{item.country}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+              Date Of Birth:{item.dateOfBirth}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+              Gender :{item.gender}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+              password :{item.password}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+              Role :{item.role}
+              </Text>
+           
               <Flex display="flex">
                 {/* <Accept/>
                 <Deny /> */} 
