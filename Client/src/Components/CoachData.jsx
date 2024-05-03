@@ -197,7 +197,13 @@ const CoachData = () => {
               password :{item.password}
               </Text>
               <Text fontSize="md" color="gray.500">
+              Detailed Description :{item.detailedDescription}
+              </Text>
+              <Text fontSize="md" color="gray.500">
               Role :{item.role}
+              </Text>
+              <Text fontSize="md" color="gray.500">
+              Fee :{item.fee}
               </Text>
            
               <Flex display="flex">
