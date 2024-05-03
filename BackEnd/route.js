@@ -1,5 +1,6 @@
 import express from "express";
 import StudentModel from "./models/studentSchema.js";
+
 import CoachModel from "./models/coachSchema.js";
 import sendMail from "./utils/sendMail.js";
 import DenyMail from "./utils/DenyMail.js";
@@ -104,11 +105,28 @@ router.post("/studentlogin", async (req, res) => {
       }
     } 
     else{
-      res.send({message:false})
+      res.send({message:"false in email"})
     }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: false, error: "Internal Server Error" });
   }
 });
+
+
+
+router.post("/availableTime/:id",async(req,res)=>{
+  try {
+    const id = req.params.id;
+    const newData = req.body;
+   const checkUser=await CoachModel.findById(id)
+   const updatedTime=checkUser.availableTime.push(newData)
+   const updatedUser=await checkUser.save()
+   res.send(updatedUser)
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: false, error: "Internal Server Error" });
+  }
+})
 export default router;

@@ -90,10 +90,23 @@ const coachSchema = new mongoose.Schema({
     type: String,
     // required: true
   },
+  detailedDescription:{
+    type: String,
+    // required: true
+  },
+  fee:{
+    type: Number,
+    // required: true
+  },  
   password:{
     type: String,
     // required: true
   },
+  availableTime: {
+    type: Array,
+    default:[]
+    // required: true
+  }
 });
 
 const CoachModel = mongoose.model("verifiedCoach", coachSchema);
