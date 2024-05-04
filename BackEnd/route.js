@@ -125,7 +125,7 @@ router.post("/availableTime/:id",async(req,res)=>{
    res.send(updatedUser)
     
   } catch (err) {
-    console.error(err);
+    console.error(err);4
     res.status(500).send({ message: false, error: "Internal Server Error" });
   }
 })
