@@ -77,7 +77,10 @@ router.post("/coachlogin", async (req, res) => {
     const coachExists = await CoachModel.findOne({ email: email });
     if (coachExists) {
       if(coachExists.password===password){
-      res.send({ message: true });}
+      res.send({ message: true , userId:coachExists._id});
+    // console.log("userId: ", userId);
+  
+  }
       else {
         res.send({message : false})
       }
@@ -125,7 +128,7 @@ router.post("/availableTime/:id",async(req,res)=>{
    res.send(updatedUser)
     
   } catch (err) {
-    console.error(err);4
+    console.error(err);
     res.status(500).send({ message: false, error: "Internal Server Error" });
   }
 })
