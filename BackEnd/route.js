@@ -1,6 +1,6 @@
 import express from "express";
 import StudentModel from "./models/studentSchema.js";
-
+import dotenv from "dotenv"
 import CoachModel from "./models/coachSchema.js";
 import sendMail from "./utils/sendMail.js";
 import DenyMail from "./utils/DenyMail.js";
@@ -77,7 +77,11 @@ router.post("/coachlogin", async (req, res) => {
     const coachExists = await CoachModel.findOne({ email: email });
     if (coachExists) {
       if(coachExists.password===password){
-      res.send({ message: true });}
+      res.send({ message: true , userId:coachExists._id});
+      // const token = jwt.sign({ userId: user._id, email: user.Email },process.env.secret, { expiresIn: '7d' });
+    // console.log("userId: ", userId);
+  
+  }
       else {
         res.send({message : false})
       }
@@ -99,7 +103,7 @@ router.post("/studentlogin", async (req, res) => {
     const studentExists = await StudentModel.findOne({ email: email });
     if (studentExists) {
       if(studentExists.password===password){
-      res.send({ message: true });}
+      res.send({ message: true ,userId:studentExists._id});}
       else {
         res.send({message : false})
       }
@@ -125,8 +129,47 @@ router.post("/availableTime/:id",async(req,res)=>{
    res.send(updatedUser)
     
   } catch (err) {
-    console.error(err);4
+    console.error(err);
     res.status(500).send({ message: false, error: "Internal Server Error" });
   }
 })
+
+router.get("/getparticularCoach/:id",async(req,res)=>{
+  const id = req.params.id;
+  try {
+    const data=await CoachModel.findById(id);
+    res.send({data})
+  } catch (error) {
+    res.send(error)
+  }
+  })
+
+router.patch("/sliceTime/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const time = req.body;
+    
+    const checkUser = await CoachModel.findById(id);
+    if (checkUser){
+
+      const foundIndex = checkUser.availableTime.findIndex(slot => slot.startTime === time.startTime && slot.endTime === time.endTime);
+      
+      if (foundIndex !== -1) {
+        checkUser.availableTime.splice(foundIndex, 1);
+      } else {
+        return res.status(404).send({ message: false, error: "Time slot not found" });
+      }
+  
+      const updatedUser = await checkUser.save();
+      res.send(updatedUser);
+    }
+    else{
+      res.status(404).send("User Not Found");
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: false, error: "Internal Server Error" });
+  }
+});
+
 export default router;
