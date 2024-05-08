@@ -203,7 +203,7 @@ const CoachData = () => {
               Role :{item.role}
               </Text>
               <Text fontSize="md" color="gray.500">
-              Fee :{item.fee}
+              Fee:{item.fee}
               </Text>
            
               <Flex display="flex">
