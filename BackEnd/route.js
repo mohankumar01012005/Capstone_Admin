@@ -5,7 +5,10 @@ import CoachModel from "./models/coachSchema.js";
 import sendMail from "./utils/sendMail.js";
 import DenyMail from "./utils/DenyMail.js";
 import coachSuccessMail from "./utils/coachSuccessMail.js";
+import CoachTestMail from "./utils/CoachTestMail.js";
+import StudentTestMail from "./utils/StudentTestMail.js";
 const router = express.Router();
+
 
 router.use(express.json());
 
@@ -51,6 +54,9 @@ try {
 
 router.get("/sendemail", sendMail);
 router.get("/denyemail", DenyMail);
+router.get("/CoachTestMail", CoachTestMail);
+router.get("/StudentTestMail", StudentTestMail);
+
 
 router.post("/createCoach", async (req, res) => {
   const { email, firstName } = req.body;
@@ -95,7 +101,7 @@ router.post("/coachlogin", async (req, res) => {
   }
 });
 
-
+    
 
 router.post("/studentlogin", async (req, res) => {
   const { email, password } = req.body;
@@ -144,24 +150,33 @@ router.get("/getparticularCoach/:id",async(req,res)=>{
   }
   })
 
-router.patch("/sliceTime/:id", async (req, res) => {
+router.patch("/sliceTime/:id/:studentId", async (req, res) => {
   try {
+    const studentId= req.params.studentId;
     const id = req.params.id;
     const time = req.body;
-    
     const checkUser = await CoachModel.findById(id);
-    if (checkUser){
+    const studentExist = await StudentModel.findById(studentId);
 
+    if (checkUser){
+      
       const foundIndex = checkUser.availableTime.findIndex(slot => slot.startTime === time.startTime && slot.endTime === time.endTime);
       
       if (foundIndex !== -1) {
+                      // Coach Email   // Student Email.
+        CoachTestMail(checkUser.email,studentExist.email);
+        StudentTestMail(studentExist.email);
+        studentExist.SlotBooked=true
+        console.log("SlotBooked: ", studentExist.SlotBooked);
         checkUser.availableTime.splice(foundIndex, 1);
       } else {
         return res.status(404).send({ message: false, error: "Time slot not found" });
       }
   
       const updatedUser = await checkUser.save();
-      res.send(updatedUser);
+      const saveStudent= await studentExist.save();
+      // res.send(updatedUser); 
+      // res.send(saveStudent);
     }
     else{
       res.status(404).send("User Not Found");
