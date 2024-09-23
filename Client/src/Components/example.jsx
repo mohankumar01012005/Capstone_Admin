@@ -55,9 +55,9 @@ const Example = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://cric-elevate.vercel.app/fetchData"
+        "https://cric-elevate.vercel.app/users"
       );
-      console.log(response.data);
+      console.log("get requst data",response.data);
       setData(response.data.data);
     } catch (error) {
       setError(error.message);
